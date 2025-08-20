@@ -104,6 +104,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: sonarqube-backend
     steps:
+      
+      - name: Checkout code   
+        uses: actions/checkout@v4
+        
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
@@ -128,6 +132,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: sonarqube-frontend
     steps:
+      - name: Checkout code   
+        uses: actions/checkout@v4
+        
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
