@@ -13,12 +13,14 @@ jobs:
     runs-on: runner-1
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: setup nodejs 
+      uses: action/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        node-version: '23'
+   
     - name: frontentd compilation (syntax error)
       run: |
         cd client
