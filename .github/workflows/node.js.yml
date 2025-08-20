@@ -1,7 +1,8 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+# GitHub Actions workflow for Node.js 3-Tier App (frontend + backend)
+# It checks for syntax errors in JS files during CI
 
-name: 3-Tier github-action cicd
+name: 3-Tier GitHub Action CI/CD
+
 on:
   push:
     branches: [ "main" ]
@@ -10,18 +11,23 @@ on:
 
 jobs:
   compile:
-    runs-on: runner-1
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: frontentd compilation (syntax error)
+
+      - name: Frontend compilation (syntax check)
         run: |
           cd client
-          find . -name ".js" -exec node --check () +
-          
-      - name: backend compilation (syntax error)
+          find . -name "*.js" -exec node --check {} \;
+
+      - name: Backend compilation (syntax check)
         run: |
           cd api
-          find . -name ".js" -exec node --check () +
+          find . -name "*.js" -exec node --check {} \;
