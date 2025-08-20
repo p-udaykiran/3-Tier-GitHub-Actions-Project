@@ -44,16 +44,16 @@ jobs:
           gitleaks detect --source ./api --exit-code 1
   trivy_scan:
     runs-on: runner-1
-    needs:  compile
+    needs:  gitleaks
     steps:
       - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: 'fs'
           scan-ref: '.'
-          format: tabel
+          format: table
           ignore-unfixed: true
-          vuln-type: 'llibrary'
+          vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           
               
