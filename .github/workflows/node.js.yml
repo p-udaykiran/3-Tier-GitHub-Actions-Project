@@ -80,13 +80,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4  
-      - name : sonarQube Scan (backend)
+      - name : sonarQube Scan (api)
         uses: sonarsource/sonarqube-scan-action@master
         with:
           projectBaseDir: api
           args: >
-            - Dsonar.projectKey=myorg_client
-            - Dsonar.projectName=myorg_client
+            - Dsonar.projectKey=myorg_api
+            - Dsonar.projectName=myorg_api
             - Dsonar.source=.
             - Dsonar.exclusion=**/node_module/**,**/dist/**,**/build/**
         env:
