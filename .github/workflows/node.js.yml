@@ -11,7 +11,7 @@ on:
 
 jobs:
   compile:
-    runs-on: ubuntu-latest
+    runs-on: runner-1
 
     steps:
       - name: Checkout code
