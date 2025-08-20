@@ -11,22 +11,17 @@ on:
 jobs:
   compile:
     runs-on: runner-1
-
     steps:
-    - name: checkout
-      uses: actions/checkout@v4
-
-    - name: setup nodejs 
-      uses: action/setup-node@v4
-      with:
-        node-version: '23'
-   
-    - name: frontentd compilation (syntax error)
-      run: |
-        cd client
-        find . -name ".js" -exec node --check () +
-        
-    - name: backend compilation (syntax error)
-      run: |
-        cd api
-        find . -name ".js" -exec node --check () +
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: frontentd compilation (syntax error)
+        run: |
+          cd client
+          find . -name ".js" -exec node --check () +
+          
+      - name: backend compilation (syntax error)
+        run: |
+          cd api
+          find . -name ".js" -exec node --check () +
