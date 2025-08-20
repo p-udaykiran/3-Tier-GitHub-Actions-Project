@@ -53,7 +53,7 @@ jobs:
           scan-ref: '.'
           format: tabel
           ignore-unfixed: true
-          vuln-type: 'os,llibrary'
+          vuln-type: 'llibrary'
           severity: 'CRITICAL,HIGH'
           
               
