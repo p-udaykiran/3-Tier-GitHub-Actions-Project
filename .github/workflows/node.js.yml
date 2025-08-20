@@ -67,10 +67,10 @@ jobs:
         with:
           projectBaseDir: client
           args: >
-            - Dsonar.projectKey=myorg_client
-            - Dsonar.projectName=myorg_client
-            - Dsonar.source=.
-            - Dsonar.exclusion=**/node_module/**,**/dist/**,**/build/**
+            -Dsonar.projectKey=myorg_client
+            -Dsonar.projectName=myorg_client
+            -Dsonar.source=.
+            -Dsonar.exclusion=**/node_module/**,**/dist/**,**/build/**
         env:
           SONAR_TOKEN: ${ { secrets.SONAR_TOKEN } }
           SONAR_URL: ${ { secrets.SONAR_URL } }
@@ -85,10 +85,10 @@ jobs:
         with:
           projectBaseDir: api
           args: >
-            - Dsonar.projectKey=myorg_api
-            - Dsonar.projectName=myorg_api
-            - Dsonar.source=.
-            - Dsonar.exclusion=**/node_module/**,**/dist/**,**/build/**
+            -Dsonar.projectKey=myorg_api
+            -Dsonar.projectName=myorg_api
+            -Dsonar.source=.
+            -Dsonar.exclusion=**/node_module/**,**/dist/**,**/build/**
         env:
           SONAR_TOKEN: ${ { secrets.SONAR_TOKEN } }
           SONAR_URL: ${ { secrets.SONAR_URL } }
