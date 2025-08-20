@@ -12,22 +12,34 @@ on:
 jobs:
   compile:
     runs-on: runner-1
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-
+          node-version: 23
       - name: Frontend compilation (syntax check)
         run: |
           cd client
           find . -name "*.js" -exec node --check {} \;
-
       - name: Backend compilation (syntax check)
         run: |
           cd api
           find . -name "*.js" -exec node --check {} \;
+
+  
+  gitleaks:
+    runs-on: runner-1
+    needs: compile
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  
+      - name: gitleaks setup 
+        uses: gitleaks/gitleaks-action@v2
+
+      - name: gitleaks scann
+        run: |
+          gitleaks detect --source ./client --exit-code 1
+          gitleaks detect --source ./api --exit-code 1
+              
