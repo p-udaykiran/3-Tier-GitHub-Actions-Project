@@ -212,7 +212,7 @@ jobs:
       - name: configure kubeconfig
         run: |
           mkdir -p $HOME/.kube
-          echo "${{ secrets.EKS_KUBECONFIG }} " > $HOME/.kube/config
+          echo "${{ secrets.EKS_KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
       - name: Deplot to EKS
         run: |
           kubectl apply -f k8s-prod/sc.yaml
